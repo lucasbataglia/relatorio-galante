@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './App.css'; // Pode conter estilos globais ou específicos do App
+import Dashboard from './components/Dashboard';
+import { ImobiliariasProvider } from './context/ImobiliariasContext';
 
 function App() {
+  // ID fixo da imobiliária "Galante Imóveis"
+  const galanteImobiliariaId = 34; 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // O Provider envolve o Dashboard para fornecer os dados
+    <ImobiliariasProvider>
+      <div className="App">
+        {/* Renderiza o Dashboard passando o ID fixo */}
+        <Dashboard imobiliariaId={galanteImobiliariaId} />
+      </div>
+    </ImobiliariasProvider>
   );
 }
 
